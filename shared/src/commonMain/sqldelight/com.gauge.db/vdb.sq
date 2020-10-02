@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS Events (
+eventName TEXT NOT NULL,
+eventType TEXT NOT NULL,
+attributes TEXT,
+trackedAt INTEGER NOT NULL
+);
+
+insertItem:
+INSERT OR REPLACE INTO Events(eventName, eventType, attributes, trackedAt)VALUES(?,?,?,?);
+
+selectAll:
+SELECT * FROM Events;
+
+deleteAll:
+DELETE FROM Events;
