@@ -5,6 +5,7 @@ plugins {
     id("com.android.library")
     id("kotlin-android-extensions")
     id("com.squareup.sqldelight")
+    kotlin("plugin.serialization") version "1.4.10"
 }
 group = "com.jetbrains.handson.mpp.kmmsqldelightpoc"
 version = "1.0-SNAPSHOT"
@@ -28,6 +29,9 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation ("com.squareup.sqldelight:runtime:1.4.3")
+                implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.0-RC2")
+                implementation ("org.jetbrains.kotlinx:kotlinx-serialization-protobuf:1.0.0-RC2")
+
             }
         }
         val commonTest by getting {
@@ -90,6 +94,5 @@ sqldelight {
         packageName = "com.gauge.db"
         sourceFolders = listOf("sqldelight")
         schemaOutputDirectory = file("build/dbs")
-        deriveSchemaFromMigrations = true
     }
 }

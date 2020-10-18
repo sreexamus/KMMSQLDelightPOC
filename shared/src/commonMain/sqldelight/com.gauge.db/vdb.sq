@@ -1,15 +1,17 @@
-CREATE TABLE IF NOT EXISTS Events (
+CREATE TABLE Events (
 eventName TEXT NOT NULL,
 eventType TEXT NOT NULL,
 attributes TEXT,
+sessionId INTEGER NOT NULL,
 trackedAt INTEGER NOT NULL
 );
 
-insertItem:
-INSERT OR REPLACE INTO Events(eventName, eventType, attributes, trackedAt)VALUES(?,?,?,?);
+insertEvent:
+INSERT OR REPLACE INTO Events(eventName, eventType, attributes, sessionId, trackedAt)VALUES(?,?,?,?,?);
 
-selectAll:
+selectAllEvents:
 SELECT * FROM Events;
 
-deleteAll:
+deleteAllEvents:
 DELETE FROM Events;
+

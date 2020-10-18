@@ -4,17 +4,18 @@ import shared
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let driver = DatabaseDriverFactory()
-        let db = PlatformKt.createDb(dbDriverFactory: driver)
-        db.gaugeQueries.insertItem(eventName: <#T##String#>, eventType: <#T##String#>, attributes: <#T##String?#>, trackedAt: <#T##Int64#>)
-        let events = db.gaugeQueries.selectAll().executeAsList()
-        print("events..\(events)")
+       // let driver = DatabaseDriverFactory()
+        //let db = PlatformKt.createDb(dbDriverFactory: driver)
+        
+       // db.vdbQueries.insertEvent(eventName: "login", eventType: "login", attributes: "id:7879", sessionId: 2121, trackedAt: 89876576)
+        //let events = db.vdbQueries.selectAllEvents().executeAsList()
+        //print("events..\(events)")
         let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
         print(paths[0])
+        Gauge().logEvent(name: "login", attributes: ["red": "rwe"])
+        
         return true
     }
 

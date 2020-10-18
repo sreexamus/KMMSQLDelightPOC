@@ -1,0 +1,2 @@
+com/jetbrains/handson/mpp/kmmsqldelightpoc/androidApp/BuildConfig.java
+ com.jetbrains.handson.mpp.kmmsqldelightpoc.androidApp.BuildConfig
