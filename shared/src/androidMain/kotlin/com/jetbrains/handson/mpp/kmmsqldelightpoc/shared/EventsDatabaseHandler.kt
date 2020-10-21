@@ -11,11 +11,13 @@ import com.jetbrains.handson.mpp.kmmsqldelightpoc.shared.GauageSDK
         )
         val driver = factory.createDriver()
         val db = GaugeDatabase(driver)
-        try {
-            db.vdbQueries.insertEvent(eventName = name, eventType = "auto",attributes = "123234232", sessionId = 4323, trackedAt = 433)
-        }
-        catch (e: java.lang.Exception) {
-            throw Exception("Event table insertion $e")
+        db.transaction {
+            try {
+                db.vdbQueries.insertEvent(eventName = name, eventType = "auto",attributes = "123234232", sessionId = 4323, trackedAt = 433)
+            }
+            catch (e: java.lang.Exception) {
+                throw Exception("Event table insertion $e")
+            }
         }
 
         // get list of events from Gauge DB

@@ -6,11 +6,18 @@ import com.gauge.db.GaugeDatabase
         val driver = factory.createDriver()
         val db = GaugeDatabase(driver)
         // insert event to Gauge DB
-        try {
-            db.vdbQueries.insertEvent(eventName = name, eventType = "auto",attributes = "123234232", sessionId = 4323, trackedAt = 433)
-        }
-        catch (e: Exception) {
-            throw Exception("Event table insertion $e")
+        db.transaction {
+            try {
+                db.vdbQueries.insertEvent(
+                    eventName = name,
+                    eventType = "auto",
+                    attributes = "123234232",
+                    sessionId = 4323,
+                    trackedAt = 433
+                )
+            } catch (e: Exception) {
+                throw Exception("Event table insertion $e")
+            }
         }
 
         // get list of events from Gauge DB
